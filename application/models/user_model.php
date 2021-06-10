@@ -40,4 +40,10 @@ class User_model extends CI_Model
         $this->db->query($sql);
     }
 
+    public function countUser(){
+        $sql = "SELECT count(user_id) usercount from users where active=1";
+        $user = $this->db->query($sql)->row();
+        return $user->usercount;
+    }
+
 }

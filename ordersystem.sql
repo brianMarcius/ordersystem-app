@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 09 Jun 2021 pada 16.56
+-- Waktu pembuatan: 10 Jun 2021 pada 15.28
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.34
 
@@ -64,6 +64,7 @@ CREATE TABLE `master_dish` (
   `dish_id` int(11) NOT NULL,
   `dish_name` varchar(50) NOT NULL,
   `category` int(11) NOT NULL,
+  `price` decimal(10,0) NOT NULL DEFAULT 0,
   `active` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -71,16 +72,16 @@ CREATE TABLE `master_dish` (
 -- Dumping data untuk tabel `master_dish`
 --
 
-INSERT INTO `master_dish` (`dish_id`, `dish_name`, `category`, `active`) VALUES
-(1, 'Chicken Steak', 1, 1),
-(2, 'Ice Tea', 2, 1),
-(3, 'Chicken Cordon Blue', 1, 1),
-(4, 'Fried Rice', 1, 1),
-(5, 'Lemon Tea', 2, 1),
-(6, 'Mineral Water', 2, 1),
-(7, 'Orange Juice', 2, 1),
-(8, 'French fries', 3, 1),
-(9, 'Crispy Mushroom', 3, 1);
+INSERT INTO `master_dish` (`dish_id`, `dish_name`, `category`, `price`, `active`) VALUES
+(1, 'Chicken Steak', 1, '25000', 1),
+(2, 'Ice Tea', 2, '5000', 1),
+(3, 'Chicken Cordon Blue', 1, '32000', 1),
+(4, 'Fried Rice', 1, '20000', 1),
+(5, 'Lemon Tea', 2, '7500', 1),
+(6, 'Mineral Water', 2, '3000', 1),
+(7, 'Orange Juice', 2, '7500', 1),
+(8, 'French fries', 3, '10000', 1),
+(9, 'Crispy Mushroom', 3, '10000', 1);
 
 -- --------------------------------------------------------
 
@@ -127,6 +128,7 @@ INSERT INTO `master_price` (`price_id`, `dish_id`, `size`, `price`) VALUES
 CREATE TABLE `order_transaction` (
   `order_id` int(11) NOT NULL,
   `no_queue` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
   `customer_name` int(11) NOT NULL,
   `trx_date` datetime NOT NULL DEFAULT current_timestamp(),
   `dine_in` int(1) NOT NULL DEFAULT 1,
@@ -175,7 +177,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `last_login`, `active`) VALUES
-(1, 'indahaulia', 'andrindah@gmail.com', '$2y$10$Z34LXzHrEfkAW1plV/Sr6.fhmsELyFKfb8Z7wXP8WYG48Tu06He5.', '2021-06-09 21:52:45', 1);
+(1, 'indahaulia', 'andrindah@gmail.com', '$2y$10$Z34LXzHrEfkAW1plV/Sr6.fhmsELyFKfb8Z7wXP8WYG48Tu06He5.', '2021-06-10 20:26:38', 1);
 
 --
 -- Indexes for dumped tables
