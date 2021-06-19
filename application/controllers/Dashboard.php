@@ -11,6 +11,9 @@ class Dashboard extends CI_Controller {
         $this->load->model("order_model");
         $this->load->model("customer_model");
         $this->load->library('form_validation');
+
+        if($this->user_model->isNotLogin()) redirect(site_url('login'));
+
     }
 
     public function index()

@@ -30,12 +30,12 @@
     <!-- /.lockscreen-image -->
 
     <!-- lockscreen credentials (contains the form) -->
-    <form class="lockscreen-credentials" method="post" action="<?php site_url('mainmenu/bestseller') ?>">
+    <form class="lockscreen-credentials" method="post" action="<?php echo site_url('mainmenu/bestseller') ?>">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="enter your name">
+        <input type="text" class="form-control" placeholder="enter your name" name="customer_name">
 
         <div class="input-group-append">
-          <button type="button" class="btn">
+          <button type="submit" class="btn">
             <i class="fas fa-arrow-right text-muted"></i>
           </button>
         </div>

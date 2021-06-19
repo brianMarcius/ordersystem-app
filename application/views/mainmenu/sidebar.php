@@ -14,7 +14,7 @@
           <img src="../assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?php echo $_SESSION['customer_logged'] ?></a>
         </div>
       </div>
 
@@ -36,7 +36,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="<?php echo site_url('mainmenu/bestseller') ?>" class="nav-link active">
               <i class="nav-icon fas fa-crown"></i>
               <p>
                 Best Seller
@@ -45,7 +45,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="<?php echo site_url('mainmenu/foods') ?>" class="nav-link">
               <i class="nav-icon fas fa-utensils"></i>
               <p>
                 Foods
@@ -53,7 +53,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="<?php echo site_url('mainmenu/drinks') ?>" class="nav-link">
               <i class="nav-icon fas fa-coffee"></i>
               <p>
                 Drinks
@@ -61,7 +61,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="<?php echo site_url('mainmenu/snacks') ?>" class="nav-link">
               <i class="nav-icon fas fa-hamburger"></i>
               <p>
                 Snacks
