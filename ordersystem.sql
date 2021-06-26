@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 10 Jun 2021 pada 15.28
+-- Waktu pembuatan: 26 Jun 2021 pada 15.26
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.34
 
@@ -54,6 +54,17 @@ CREATE TABLE `master_customer` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `master_customer`
+--
+
+INSERT INTO `master_customer` (`customer_id`, `customer_name`, `created_at`) VALUES
+(1, 'test', '2021-06-11 14:29:10'),
+(2, 'test', '2021-06-11 14:30:09'),
+(3, 'Indah Aulia Andriani', '2021-06-11 17:04:30'),
+(4, 'indah', '2021-06-12 14:20:50'),
+(7, 'brian', '2021-06-26 19:37:53');
+
 -- --------------------------------------------------------
 
 --
@@ -65,6 +76,7 @@ CREATE TABLE `master_dish` (
   `dish_name` varchar(50) NOT NULL,
   `category` int(11) NOT NULL,
   `price` decimal(10,0) NOT NULL DEFAULT 0,
+  `img` text DEFAULT NULL,
   `active` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -72,16 +84,16 @@ CREATE TABLE `master_dish` (
 -- Dumping data untuk tabel `master_dish`
 --
 
-INSERT INTO `master_dish` (`dish_id`, `dish_name`, `category`, `price`, `active`) VALUES
-(1, 'Chicken Steak', 1, '25000', 1),
-(2, 'Ice Tea', 2, '5000', 1),
-(3, 'Chicken Cordon Blue', 1, '32000', 1),
-(4, 'Fried Rice', 1, '20000', 1),
-(5, 'Lemon Tea', 2, '7500', 1),
-(6, 'Mineral Water', 2, '3000', 1),
-(7, 'Orange Juice', 2, '7500', 1),
-(8, 'French fries', 3, '10000', 1),
-(9, 'Crispy Mushroom', 3, '10000', 1);
+INSERT INTO `master_dish` (`dish_id`, `dish_name`, `category`, `price`, `img`, `active`) VALUES
+(1, 'Chicken Steak', 1, '25000', 'assets/product_img/chicken_steak.png', 1),
+(2, 'Ice Tea', 2, '5000', 'assets/product_img/ice_tea.jpeg', 1),
+(3, 'Chicken Cordon Blue', 1, '32000', 'assets/product_img/chicken_steak.png', 1),
+(4, 'Fried Rice', 1, '20000', 'assets/product_img/nasi_goreng.jpeg', 1),
+(5, 'Lemon Tea', 2, '7500', 'assets/product_img/ice_tea.jpeg', 1),
+(6, 'Mineral Water', 2, '3000', 'assets/product_img/mineral_water.jpeg', 1),
+(7, 'Orange Juice', 2, '7500', 'assets/product_img/orange_juice.jpeg', 1),
+(8, 'French fries', 3, '10000', 'assets/product_img/french_fries.jpeg', 1),
+(9, 'Crispy Mushroom', 3, '10000', 'assets/product_img/crispy_mushroom.jpeg', 1);
 
 -- --------------------------------------------------------
 
@@ -177,7 +189,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `last_login`, `active`) VALUES
-(1, 'indahaulia', 'andrindah@gmail.com', '$2y$10$Z34LXzHrEfkAW1plV/Sr6.fhmsELyFKfb8Z7wXP8WYG48Tu06He5.', '2021-06-10 20:26:38', 1);
+(1, 'indahaulia', 'andrindah@gmail.com', '$2y$10$Z34LXzHrEfkAW1plV/Sr6.fhmsELyFKfb8Z7wXP8WYG48Tu06He5.', '2021-06-12 14:49:06', 1);
 
 --
 -- Indexes for dumped tables
@@ -239,7 +251,7 @@ ALTER TABLE `category_dish`
 -- AUTO_INCREMENT untuk tabel `master_customer`
 --
 ALTER TABLE `master_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_dish`

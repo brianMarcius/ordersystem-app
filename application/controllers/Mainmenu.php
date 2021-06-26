@@ -15,19 +15,19 @@ class Mainmenu extends CI_Controller {
 
     public function index()
     {
-        $this->load->view("mainmenu/lockscreen.php");
-
-        
-        
+        $this->load->view("mainmenu/lockscreen.php");        
     }
 
     public function bestSeller(){
-        
-        $this->customer_model->save();
+        if (empty($_SESSION['customer_logged'])) {
+            $this->customer_model->save();
+        }
+
+        $data['foods'] = $this->dishert_model->showFoods();
 
         $this->load->view("mainmenu/header.php");
         $this->load->view("mainmenu/sidebar.php");
-        $this->load->view("mainmenu/menu.php");
+        $this->load->view("mainmenu/menu.php",$data);
         $this->load->view("mainmenu/footer.php");
     }
 

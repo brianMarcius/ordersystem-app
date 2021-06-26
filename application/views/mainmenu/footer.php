@@ -48,7 +48,7 @@
 <script>
     $(function(){
       // if ($.cookie('pop') == null) {
-        $("#modal-lg").modal("show");
+        // $("#modal-lg").modal("show");
         // $.cookie('pop', '7');
       //  }
 

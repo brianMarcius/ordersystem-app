@@ -1,4 +1,4 @@
-
+<!-- <?php print_r($foods[2]) ?> -->
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper bg-white d-block" id="bestseller">
     <!-- Content Header (Page header) -->
@@ -27,20 +27,25 @@
             <div class="post">
               <div class="row mb-3">
                 <div class="col-sm-6">
-                  <img class="img-fluid" src="../assets/dist/img/photo1.png" alt="Photo">
+                  <img class="img-fluid" src="<?php echo site_url().$foods[0]->img ?>" alt="Photo">
                 </div>
                         <!-- /.col -->
                         <div class="col-sm-6">
                           <div class="row">
                             <div class="col-sm-6">
-                              <img class="img-fluid mb-3" src="../assets/dist/img/photo2.png" alt="Photo">
-                              <img class="img-fluid" src="../assets/dist/img/photo3.jpg" alt="Photo">
+                              <?php 
+                                
+                              ?>
+                              <img class="img-fluid mb-3" src="<?php echo site_url().$foods[1]->img ?>" alt="Photo">
+                              <img class="img-fluid" src="<?php echo site_url().$foods[2]->img ?>" alt="Photo">
+                              <?php 
+                                
+                              ?>
                             </div>
                             <!-- /.col -->
-                            <div class="col-sm-6">
-                              <img class="img-fluid mb-3" src="../assets/dist/img/photo4.jpg" alt="Photo">
-                              <img class="img-fluid" src="../assets/dist/img/photo1.png" alt="Photo">
-                            </div>
+                            <!-- <div class="col-sm-6">
+                            
+                            </div> -->
                             <!-- /.col -->
                           </div>
                           <!-- /.row -->

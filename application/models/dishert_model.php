@@ -11,4 +11,10 @@ class Dishert_model extends CI_Model
         return $user->dish;
     }
 
+    public function showFoods(){
+        $sql = "SELECT * from master_dish where category=1 and active=1";
+        $foods = $this->db->query($sql)->result();
+        return $foods;
+    }
+
 }
