@@ -22,5 +22,9 @@ class Customer_model extends CI_Model
         return $this->db->insert($this->_table, $this);
     }
 
+    public function quit(){
+        return $this->session->userdata('customer_logged') === null;
+    }
+
 
 }

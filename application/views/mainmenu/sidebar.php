@@ -36,7 +36,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?php echo site_url('mainmenu/bestseller') ?>" class="nav-link active">
+            <a class="nav-link active" onclick="changeMenu(this,'bestseller')">
               <i class="nav-icon fas fa-crown"></i>
               <p>
                 Best Seller
@@ -45,7 +45,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo site_url('mainmenu/foods') ?>" class="nav-link">
+            <a class="nav-link" onclick="changeMenu(this,'foods')">
               <i class="nav-icon fas fa-utensils"></i>
               <p>
                 Foods
@@ -53,7 +53,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo site_url('mainmenu/drinks') ?>" class="nav-link">
+            <a class="nav-link" onclick="changeMenu(this,'drinks')">
               <i class="nav-icon fas fa-coffee"></i>
               <p>
                 Drinks
@@ -61,7 +61,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo site_url('mainmenu/snacks') ?>" class="nav-link">
+            <a class="nav-link" onclick="changeMenu(this,'snacks')">
               <i class="nav-icon fas fa-hamburger"></i>
               <p>
                 Snacks

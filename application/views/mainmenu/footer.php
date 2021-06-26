@@ -52,11 +52,18 @@
         // $.cookie('pop', '7');
       //  }
 
-      myFunction();
+      timeOutSession();
     });
 
-    function myFunction() {
-      setTimeout(function(){ alert("Hello"); }, 3000);
+    function timeOutSession() {
+      setTimeout(function(){ alert("Are you still there ?"); }, 30000);
+    }
+
+    function changeMenu(th,id){
+      $('a.nav-link').removeClass('active');
+      $(th).addClass('active');
+      $('div.d-block').removeClass('d-block').addClass('d-none');
+      $('#'+id).removeClass('d-none').addClass('d-block');
     }
 
 
