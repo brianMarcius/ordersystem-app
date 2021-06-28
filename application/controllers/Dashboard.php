@@ -30,10 +30,10 @@ class Dashboard extends CI_Controller {
             'order' => $order,
             'customer' => $customer,
         );
-        $this->load->view("template/header.php");
-        $this->load->view("template/sidebar.php");
+        $this->load->view("admin/header.php");
+        $this->load->view("admin/sidebar.php");
         $this->load->view("admin/index.php", $data);
-        $this->load->view("template/footer.php");
+        $this->load->view("admin/footer.php");
     }
 
 }
