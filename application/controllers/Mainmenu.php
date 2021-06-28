@@ -24,11 +24,19 @@ class Mainmenu extends CI_Controller {
         }
 
         $data['foods'] = $this->dishert_model->showFoods();
+        $data['drinks'] = $this->dishert_model->showDrinks();
+        $data['snacks'] = $this->dishert_model->showSnacks();
 
         $this->load->view("mainmenu/header.php");
         $this->load->view("mainmenu/sidebar.php");
         $this->load->view("mainmenu/menu.php",$data);
         $this->load->view("mainmenu/footer.php");
+    }
+
+    public function getDishert(){
+        $id = $this->input->get('id');
+        $data = $this->dishert_model->getDishert($id);
+        echo json_encode($data);
     }
 
     // public function foods(){

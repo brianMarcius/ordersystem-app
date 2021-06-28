@@ -52,7 +52,7 @@
         // $.cookie('pop', '7');
       //  }
 
-      timeOutSession();
+      // timeOutSession();
     });
 
     function timeOutSession() {
@@ -64,6 +64,24 @@
       $(th).addClass('active');
       $('div.d-block').removeClass('d-block').addClass('d-none');
       $('#'+id).removeClass('d-none').addClass('d-block');
+    }
+
+    function addToCart(id){
+      $.ajax({
+        type : "GET",
+        url : "getDishert",
+        data : {
+          id:id
+        },
+        dataType : "JSON",
+        success:function(result){
+          console.log(result[0].img);
+          $("#img-product").attr('src',"../"+result[0].img)
+          $("#name-product").html(result[0].dish_name)
+          $("#addToCart").modal('show');
+        }
+      })
+      console.log(id)
     }
 
 

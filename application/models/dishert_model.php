@@ -17,4 +17,21 @@ class Dishert_model extends CI_Model
         return $foods;
     }
 
+    public function showDrinks(){
+        $sql = "SELECT * from master_dish where category=2 and active=1";
+        $drinks = $this->db->query($sql)->result();
+        return $drinks;
+    }
+
+    public function showSnacks(){
+        $sql = "SELECT * from master_dish where category=3 and active=1";
+        $snacks = $this->db->query($sql)->result();
+        return $snacks;
+    }
+
+    public function getDishert($id){
+        $sql = "SELECT * from master_dish where dish_id='$id' and active=1";
+        $dishert = $this->db->query($sql)->result();
+        return $dishert;
+    }
 }
