@@ -49,5 +49,13 @@
 <script src="assets/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="assets/dist/js/pages/dashboard.js"></script>
+<script>
+    function changeId(th,id){
+      $('a.nav-link').removeClass('active');
+      $(th).addClass('active');
+      $('div.d-block').removeClass('d-block').addClass('d-none');
+      $('#'+id).removeClass('d-none').addClass('d-block');
+    }
+</script>
 </body>
 </html>
