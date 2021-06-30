@@ -21,12 +21,14 @@ class Dashboard extends CI_Controller {
 
         // tampilkan halaman login
         $user = $this->user_model->countUser();
-        $dishert = $this->dishert_model->countDishert();
+        $dishert = $this->dishert_model->getData();
+        $dishert2 = $this->dishert_model->countDishert();
         $order = $this->order_model->countOrder();
         $customer = $this->customer_model->countCustomer();
         $data  = array(
             'user' => $user,
             'dishert' => $dishert,
+            'dishert2' => $dishert2,
             'order' => $order,
             'customer' => $customer,
         );
