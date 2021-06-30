@@ -18,8 +18,11 @@ class Customer_model extends CI_Model
     {
         $post = $this->input->post();
         $this->customer_name = $post['customer_name'];
-        $this->session->set_userdata(['customer_logged' => $this->customer_name]);
-        return $this->db->insert($this->_table, $this);
+        $insert = $this->db->insert($this->_table, $this);
+        $insert_id = $this->db->insert_id();
+        $this->session->set_userdata(['customer_logged' => $this->customer_name,'customer_id' => $insert_id]);
+        return $insert;
+
     }
 
     public function quit(){
