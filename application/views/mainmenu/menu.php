@@ -26,18 +26,18 @@
           <div class="col-12">
             <div class="post">
               <div class="row mb-3">
-              <?php for ($i=0; $i < sizeof($foods); $i++) { ?>
+              <?php for ($i=0; $i < sizeof($bestseller); $i++) { ?>
                 <div class="col-md-12 col-lg-6 col-xl-4">
-                  <div class="card mb-2" onClick="addToCart(<?php echo $foods[$i]->dish_id; ?>)">
-                    <img class="card-img-top" src="<?php echo site_url().$foods[$i]->img; ?>" style="height: 318px" alt="<?php echo $foods[$i]->dish_name;?>">
+                  <div class="card mb-2" onClick="addToCart(<?php echo $bestseller[$i]->dish_id; ?>)">
+                    <img class="card-img-top" src="<?php echo site_url().$bestseller[$i]->img; ?>" style="height: 318px" alt="<?php echo $bestseller[$i]->dish_name;?>">
                     <div class="card-img-overlay d-flex flex-column justify-content-center" style="background-image: linear-gradient(to bottom, rgba(255,0,0,0),rgba(0,0,0,0.2),rgba(0,0,0,0.5), rgba(0,0,0,1));">
-                      <h5 class="card-title text-white mt-5 pt-2"><?php echo $foods[$i]->dish_name; ?></h5>
+                      <h5 class="card-title text-white mt-5 pt-2"><?php echo $bestseller[$i]->dish_name; ?></h5>
                       <p class="card-text pb-2 pt-1 text-white">
                         <!-- Lorem ipsum dolor sit amet, <br>
                         consectetur adipisicing elit <br>
                         sed do eiusmod tempor. -->
                       </p>
-                      <a href="#" class="text-white"><?php echo "IDR. ".$foods[$i]->price; ?></a>
+                      <a href="#" class="text-white"><?php echo "IDR. ".$bestseller[$i]->price; ?></a>
                     </div>
                   </div>
                 </div>

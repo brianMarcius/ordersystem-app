@@ -23,6 +23,7 @@ class Mainmenu extends CI_Controller {
             $this->customer_model->save();
         }
 
+        $data['bestseller'] = $this->dishert_model->bestSeller();
         $data['foods'] = $this->dishert_model->showFoods();
         $data['drinks'] = $this->dishert_model->showDrinks();
         $data['snacks'] = $this->dishert_model->showSnacks();

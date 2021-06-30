@@ -13,6 +13,12 @@ class Dishert_model extends CI_Model
         return $user->dish;
     }
 
+    public function bestSeller(){
+        $sql = "SELECT sum(a.qty) jml, b.dish_id, b.dish_name, b.price, b.img FROM order_transaction_detail a, master_dish b where a.dish_id = b.dish_id group by dish_id order by 1 desc limit 3";
+        $bestseller = $this->db->query($sql)->result();
+        return $bestseller;
+    }
+
     public function showFoods(){
         $sql = "SELECT * from master_dish where category=1 and active=1";
         $foods = $this->db->query($sql)->result();
