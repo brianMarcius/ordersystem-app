@@ -145,51 +145,64 @@
 <div class="content-wrapper pt-3 px-1 d-none" id="addnew">
 <div class="container-fluid">
 <!-- DataTables -->
-<div class="card mb-3">
-  <div class="card-header">
-    <a href="#"><i class="fas fa-plus"></i> Add New</a>
-  </div>
-  <div class="card-body">
+				<?php if ($this->session->flashdata('success')): ?>
+				<div class="alert alert-success" role="alert">
+					<?php echo $this->session->flashdata('success'); ?>
+				</div>
+				<?php endif; ?>
 
-    <div class="table-responsive">
-      <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-          <tr>
-            <th>Dish Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($dishert as $dishert): ?>
-          <tr>
-            <td width="150">
-              <?php echo $dishert->dish_name ?>
-            </td>
-            <td>
-              <?php echo $dishert->category ?>
-            </td>
-            <td>
-              <?php echo $dishert->price ?>
-            </td>
-            <td class="small">
-              <img src="<?php echo $dishert->img ?>" width="64" />
-            <td width="250">
-              <a href="<?php echo site_url('admin/products/edit/'.$dishert->dish_id) ?>"
-               class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-              <a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$dishert->dish_id) ?>')"
-               href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
-            </td>
-          </tr>
-          <?php endforeach; ?>
+				<div class="card mb-3">
+					<div class="card-header">
+						<a onclick="changeId(this,'menuinput')"><i class="fas fa-arrow-left"></i> Back</a>
+					</div>
+					<div class="card-body">
 
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+						<form action="<?php echo site_url('admin/products/add') ?>" method="post" enctype="multipart/form-data" >
+							<div class="form-group">
+								<label for="name">Name*</label>
+								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
+								 type="text" name="name" placeholder="Product name" />
+								<div class="invalid-feedback">
+									<?php echo form_error('name') ?>
+								</div>
+							</div>
 
+							<div class="form-group">
+								<label for="price">Price*</label>
+								<input class="form-control <?php echo form_error('price') ? 'is-invalid':'' ?>"
+								 type="number" name="price" min="0" placeholder="Product price" />
+								<div class="invalid-feedback">
+									<?php echo form_error('price') ?>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<label for="name">Photo</label>
+								<input class="form-control-file <?php echo form_error('price') ? 'is-invalid':'' ?>"
+								 type="file" name="image" />
+								<div class="invalid-feedback">
+									<?php echo form_error('image') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Description*</label>
+								<textarea class="form-control <?php echo form_error('description') ? 'is-invalid':'' ?>"
+								 name="description" placeholder="Product description..."></textarea>
+								<div class="invalid-feedback">
+									<?php echo form_error('description') ?>
+								</div>
+							</div>
+
+							<input class="btn btn-success" type="submit" name="btn" value="Save" />
+						</form>
+
+					</div>
+
+					<div class="card-footer small text-muted">
+						* required fields
+					</div>
+        </div>
 </div>
 </div>
