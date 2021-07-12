@@ -7,7 +7,7 @@ class Dishert_model extends CI_Model
     public $dish_id;
     public $dish_name;
     public $price;
-    public $image = "default.jpg";
+    public $img = "default.jpg";
     public $category;
 
     public function rules()

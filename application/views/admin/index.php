@@ -161,7 +161,7 @@
 							<div class="form-group">
 								<label for="dish_name">Dish Name*</label>
 								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
-								 type="text" name="name" placeholder="Product name" />
+								 type="text" name="dish_name" placeholder="Product name" />
 								<div class="invalid-feedback">
 									<?php echo form_error('name') ?>
 								</div>
@@ -170,7 +170,7 @@
 							<div class="form-group">
 								<label for="category">Category*</label>
 								<input class="form-control <?php echo form_error('category') ? 'is-invalid':'' ?>"
-								 type="number" name="price" min="0" placeholder="Product category" />
+								 type="number" name="category" min="0" placeholder="Product category" />
 								<div class="invalid-feedback">
 									<?php echo form_error('price') ?>
 								</div>
