@@ -4,8 +4,28 @@ class Dishert_model extends CI_Model
 {
     private $_table = "master_dish";
 
-    
+    public $dish_id;
+    public $dish_name;
+    public $price;
+    public $image = "default.jpg";
+    public $category;
 
+    public function rules()
+    {
+        return [
+            ['field' => 'dish_id',
+            'label' => 'dish_name',
+            'rules' => 'required'],
+
+            ['field' => 'price',
+            'label' => 'price',
+            'rules' => 'numeric'],
+            
+            ['field' => 'dish_id',
+            'label' => 'category',
+            'rules' => 'required']
+        ];
+    }
 
     public function countDishert(){
         $sql = "SELECT count(dish_id) dish from master_dish where active=1";
@@ -45,5 +65,16 @@ class Dishert_model extends CI_Model
 
     public function getData(){
         return $this->db->get($this->_table)->result();
+    }
+
+    public function save()
+    {
+        $post = $this->input->post();
+        $this->dish_id = uniqid();
+        $this->dish_name = $post["dish_name"];
+        $this->price = $post["price"];
+        $this->category = $post["category"];
+        return $this->db->insert($this->_table, $this);
+        
     }
 }
