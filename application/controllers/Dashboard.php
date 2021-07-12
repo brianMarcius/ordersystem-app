@@ -43,6 +43,8 @@ class Dashboard extends CI_Controller {
         $product = $this->dishert_model;
         
             $product->save();
+        // print_r ($_FILES['image']);
+            // print_r ($product->save());
         
         $this->load->view("admin/index.php");
     }

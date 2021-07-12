@@ -7,7 +7,7 @@ class Dishert_model extends CI_Model
     public $dish_id;
     public $dish_name;
     public $price;
-    public $img = "default.jpg";
+    public $img;
     public $category;
 
     public function rules()
@@ -70,11 +70,43 @@ class Dishert_model extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        $this->dish_id = uniqid();
         $this->dish_name = $post["dish_name"];
         $this->price = $post["price"];
+        $this->img = './assets/product_img/'.$this->_uploadImage()['upload_data'];
         $this->category = $post["category"];
-        return $this->db->insert($this->_table, $this);
         
+        return $this->db->insert($this->_table, $this);
+
+        // return  $this->_uploadImage()['upload_data'];
+        
+    }
+
+    private function _uploadImage() {
+        $config['upload_path'] = './assets/product_img/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['overwrite'] = true;
+        $config['max_size'] = 2048;
+
+        $this->load->library('upload',$config);
+
+    if ( ! $this->upload->do_upload('image'))
+        {
+                $error = array('error' => $this->upload->display_errors());
+
+                return $error;
+
+                // $this->load->view('upload_form', $error);
+        }
+        else
+        {
+                $data = array('upload_data' => $this->upload->data('file_name'));
+
+                return $data;
+
+                // $this->load->view('upload_success', $data);
+        }
+
+
+        return 'default.jpg';
     }
 }

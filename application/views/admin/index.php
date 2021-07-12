@@ -186,11 +186,7 @@
 
 							<div class="form-group">
 								<label for="image">Image</label>
-								<input class="form-control-file <?php echo form_error('price') ? 'is-invalid':'' ?>"
-								 type="file" name="image" />
-								<div class="invalid-feedback">
-									<?php echo form_error('image') ?>
-								</div>
+								<input class="form-control" type="file" name="image" />
 							</div>
 
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />
