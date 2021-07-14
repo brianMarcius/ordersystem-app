@@ -25,7 +25,7 @@
   <div class="lockscreen-item">
     <!-- lockscreen image -->
     <div class="lockscreen-image">
-      <img src="assets/dist/img/user1-128x128.jpg" alt="User Image">
+      <img src="assets/dist/img/avatar-11.jpg" alt="User Image">
     </div>
     <!-- /.lockscreen-image -->
 

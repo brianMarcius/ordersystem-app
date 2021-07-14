@@ -72,12 +72,11 @@ class Dishert_model extends CI_Model
         $post = $this->input->post();
         $this->dish_name = $post["dish_name"];
         $this->price = $post["price"];
-        $this->img = './assets/product_img/'.$this->_uploadImage()['upload_data'];
+        $this->img = '/assets/product_img/'.$this->_uploadImage()['upload_data'];
         $this->category = $post["category"];
         
         return $this->db->insert($this->_table, $this);
 
-        // return  $this->_uploadImage()['upload_data'];
         
     }
 

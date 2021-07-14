@@ -32,11 +32,52 @@ class Dashboard extends CI_Controller {
             'order' => $order,
             'customer' => $customer,
         );
+
         $this->load->view("admin/header.php");
         $this->load->view("admin/sidebar.php");
         $this->load->view("admin/index.php", $data);
         $this->load->view("admin/footer.php");
+        
     }
+
+    public function formshowdata(){
+        $user = $this->user_model->countUser();
+        $dishert = $this->dishert_model->getData();
+        $dishert2 = $this->dishert_model->countDishert();
+        $order = $this->order_model->countOrder();
+        $customer = $this->customer_model->countCustomer();
+        $data  = array(
+            'user' => $user,
+            'dishert' => $dishert,
+            'dishert2' => $dishert2,
+            'order' => $order,
+            'customer' => $customer,
+        );
+        $this->load->view("admin/header.php");
+        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/menudish.php",$data);
+        $this->load->view("admin/footer.php");
+    }
+
+    public function forminput(){
+        $user = $this->user_model->countUser();
+        $dishert = $this->dishert_model->getData();
+        $dishert2 = $this->dishert_model->countDishert();
+        $order = $this->order_model->countOrder();
+        $customer = $this->customer_model->countCustomer();
+        $data  = array(
+            'user' => $user,
+            'dishert' => $dishert,
+            'dishert2' => $dishert2,
+            'order' => $order,
+            'customer' => $customer,
+        );
+        $this->load->view("admin/header.php");
+        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/inputmenu.php",$data);
+        $this->load->view("admin/footer.php");
+    }
+
 
     public function add()
     {
@@ -45,8 +86,11 @@ class Dashboard extends CI_Controller {
             $product->save();
         // print_r ($_FILES['image']);
             // print_r ($product->save());
-        
-        $this->load->view("admin/index.php");
+        $this->load->view("admin/header.php");
+        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/inputmenu.php");
+        $this->load->view("admin/footer.php");
     }
 
 }
+
