@@ -32,12 +32,10 @@
               <?php echo $dishert->price ?>
             </td>
             <td class="small">
-              <img src="<?php echo $dishert->img ?>" width="64" />
+              <img src="<?php echo base_url('assets/product_img/'.$dishert->img) ?>" width="64" />
             <td width="250">
-              <a href="<?php echo site_url('admin/products/edit/'.$dishert->dish_id) ?>"
-               class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-              <a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$dishert->dish_id) ?>')"
-               href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+              <a href="<?php echo site_url('Dashboard/edit/'.$dishert->dish_id) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+              <a onclick="deleteConfirm('<?php echo site_url('Dashboard/delete/'.$dishert->dish_id) ?>')"href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Delete</a>
             </td>
           </tr>
           <?php endforeach; ?>
@@ -48,4 +46,24 @@
 </div>
 </div>
 </div>
+<!-- Tampilan konfirmasi untuk  delete menu -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a id="btn-delete" class="btn btn-danger" href="#">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
 

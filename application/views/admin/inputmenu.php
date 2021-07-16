@@ -18,7 +18,7 @@
 						<form action="<?php echo site_url('Dashboard/add')?>" method="post" enctype="multipart/form-data" >
 							<div class="form-group">
 								<label for="dish_name">Dish Name*</label>
-								<input class="form-control <?php echo form_error('name') ? 'is-invalid':'' ?>"
+								<input class="form-control <?php echo form_error('dish_name') ? 'is-invalid':'' ?>"
 								 type="text" name="dish_name" placeholder="Product name" />
 								<div class="invalid-feedback">
 									<?php echo form_error('name') ?>
@@ -44,7 +44,7 @@
 
 							<div class="form-group">
 								<label for="image">Image</label>
-								<input class="form-control" type="file" name="image" />
+								<input class="form-control" type="file" name="img" />
 							</div>
 
 							<input class="btn btn-success" type="submit" name="btn" value="Save" />

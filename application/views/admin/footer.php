@@ -59,5 +59,11 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo site_url()?>/assets/dist/js/pages/dashboard.js"></script>
 
+<script>
+function deleteConfirm(url){
+	$('#btn-delete').attr('href', url);
+	$('#deleteModal').modal();
+}
+</script>
 </body>
 </html>

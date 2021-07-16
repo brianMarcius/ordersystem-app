@@ -21,13 +21,11 @@ class Dashboard extends CI_Controller {
 
         // tampilkan halaman login
         $user = $this->user_model->countUser();
-        $dishert = $this->dishert_model->getData();
         $dishert2 = $this->dishert_model->countDishert();
         $order = $this->order_model->countOrder();
         $customer = $this->customer_model->countCustomer();
         $data  = array(
             'user' => $user,
-            'dishert' => $dishert,
             'dishert2' => $dishert2,
             'order' => $order,
             'customer' => $customer,
@@ -41,17 +39,10 @@ class Dashboard extends CI_Controller {
     }
 
     public function formshowdata(){
-        $user = $this->user_model->countUser();
         $dishert = $this->dishert_model->getData();
-        $dishert2 = $this->dishert_model->countDishert();
-        $order = $this->order_model->countOrder();
-        $customer = $this->customer_model->countCustomer();
         $data  = array(
-            'user' => $user,
             'dishert' => $dishert,
-            'dishert2' => $dishert2,
-            'order' => $order,
-            'customer' => $customer,
+
         );
         $this->load->view("admin/header.php");
         $this->load->view("admin/sidebar.php");
@@ -60,17 +51,9 @@ class Dashboard extends CI_Controller {
     }
 
     public function forminput(){
-        $user = $this->user_model->countUser();
         $dishert = $this->dishert_model->getData();
-        $dishert2 = $this->dishert_model->countDishert();
-        $order = $this->order_model->countOrder();
-        $customer = $this->customer_model->countCustomer();
         $data  = array(
-            'user' => $user,
             'dishert' => $dishert,
-            'dishert2' => $dishert2,
-            'order' => $order,
-            'customer' => $customer,
         );
         $this->load->view("admin/header.php");
         $this->load->view("admin/sidebar.php");
@@ -82,14 +65,48 @@ class Dashboard extends CI_Controller {
     public function add()
     {
         $product = $this->dishert_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($product->rules());
         
+        if ($validation->run()) {
             $product->save();
-        // print_r ($_FILES['image']);
-            // print_r ($product->save());
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        }   
+        
         $this->load->view("admin/header.php");
         $this->load->view("admin/sidebar.php");
         $this->load->view("admin/inputmenu.php");
         $this->load->view("admin/footer.php");
+    }
+
+    public function edit($id = null)
+    {
+        if (!isset($id)) redirect('Dashboard');
+        $dishert = $this->dishert_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($dishert->rules());
+
+        if ($validation->run()) {
+            $dishert->update();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        }
+        
+        $data["dishert"] = $dishert->getById($id);
+        if (!$data["dishert"]) show_404();
+
+        $this->load->view("admin/header.php");
+        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/editmenu.php",$data);
+        $this->load->view("admin/footer.php");
+    }
+
+    public function delete($id=null)
+    {
+        if (!isset($id)) show_404();
+        
+        if ($this->dishert_model->delete($id)) {
+            redirect(site_url('Dashboard/formshowdata'));
+        }
     }
 
 }
