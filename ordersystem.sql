@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Waktu pembuatan: 30 Jun 2021 pada 16.07
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.2.34
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 17 Jul 2021 pada 05.01
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,7 +35,7 @@ CREATE TABLE `cart` (
   `qty` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `note` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -44,7 +45,8 @@ CREATE TABLE `cart` (
 INSERT INTO `cart` (`cart_id`, `customer_id`, `dish_id`, `qty`, `price`, `note`, `created_at`) VALUES
 (35, 10, 4, 1, 20000, 'test', '2021-06-29 21:14:35'),
 (36, 10, 4, 1, 20000, 'test', '2021-06-29 21:14:53'),
-(37, 10, 3, 1, 32000, 'test', '2021-06-29 21:16:34');
+(37, 10, 3, 1, 32000, 'test', '2021-06-29 21:16:34'),
+(49, 14, 17, 1, 25000, '', '2021-07-17 09:46:55');
 
 -- --------------------------------------------------------
 
@@ -55,7 +57,7 @@ INSERT INTO `cart` (`cart_id`, `customer_id`, `dish_id`, `qty`, `price`, `note`,
 CREATE TABLE `category_dish` (
   `category` int(11) NOT NULL,
   `category_name` varchar(20) NOT NULL,
-  `active` int(11) NOT NULL DEFAULT 1
+  `active` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -76,7 +78,7 @@ INSERT INTO `category_dish` (`category`, `category_name`, `active`) VALUES
 CREATE TABLE `master_customer` (
   `customer_id` int(11) NOT NULL,
   `customer_name` varchar(30) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -94,7 +96,8 @@ INSERT INTO `master_customer` (`customer_id`, `customer_name`, `created_at`) VAL
 (10, 'diana', '2021-06-29 19:46:21'),
 (11, 'popi', '2021-06-29 21:18:07'),
 (12, 'Cahyadi', '2021-06-30 13:28:06'),
-(13, 'leonardo', '2021-06-30 20:13:44');
+(13, 'leonardo', '2021-06-30 20:13:44'),
+(14, 'aku', '2021-07-17 09:34:51');
 
 -- --------------------------------------------------------
 
@@ -105,11 +108,11 @@ INSERT INTO `master_customer` (`customer_id`, `customer_name`, `created_at`) VAL
 CREATE TABLE `master_dish` (
   `dish_id` int(11) NOT NULL,
   `dish_name` varchar(50) NOT NULL,
-  `description` text DEFAULT NULL,
+  `description` text,
   `category` int(11) NOT NULL,
-  `price` decimal(10,0) NOT NULL DEFAULT 0,
-  `img` text DEFAULT NULL,
-  `active` int(11) NOT NULL DEFAULT 1
+  `price` decimal(10,0) NOT NULL DEFAULT '0',
+  `img` varchar(255) DEFAULT 'default.jpg',
+  `active` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -117,15 +120,8 @@ CREATE TABLE `master_dish` (
 --
 
 INSERT INTO `master_dish` (`dish_id`, `dish_name`, `description`, `category`, `price`, `img`, `active`) VALUES
-(1, 'Chicken Steak', NULL, 1, '25000', 'assets/product_img/chicken-steak.jpeg', 1),
-(2, 'Ice Tea', NULL, 2, '5000', 'assets/product_img/ice_tea.jpeg', 1),
-(3, 'Chicken Cordon Blue', NULL, 1, '32000', 'assets/product_img/chicken_cordon_bleu.jpeg', 1),
-(4, 'Fried Rice', NULL, 1, '20000', 'assets/product_img/nasi_goreng.jpeg', 1),
-(5, 'Lemon Tea', NULL, 2, '7500', 'assets/product_img/ice_tea.jpeg', 1),
-(6, 'Mineral Water', NULL, 2, '3000', 'assets/product_img/mineral_water.jpeg', 1),
-(7, 'Orange Juice', NULL, 2, '7500', 'assets/product_img/orange_juice.jpeg', 1),
-(8, 'French fries', NULL, 3, '10000', 'assets/product_img/french_fries.jpeg', 1),
-(9, 'Crispy Mushroom', NULL, 3, '10000', 'assets/product_img/crispy_mushroom.jpeg', 1);
+(13, 'Mie Ayam Pangsit', NULL, 1, '20000', 'mie_ayam.jpg', 1),
+(17, 'Chicken Steak', NULL, 1, '25000', 'chicken_steak.png', 1);
 
 -- --------------------------------------------------------
 
@@ -174,13 +170,13 @@ CREATE TABLE `order_transaction` (
   `no_queue` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `customer_name` text NOT NULL,
-  `trx_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `dine_in` int(1) NOT NULL DEFAULT 1,
-  `kitchen_progress` int(1) NOT NULL DEFAULT 0,
-  `grand_total` decimal(16,2) NOT NULL DEFAULT 0.00,
-  `tax` decimal(16,2) NOT NULL DEFAULT 0.00,
-  `paid_off` int(11) NOT NULL DEFAULT 0,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `trx_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dine_in` int(1) NOT NULL DEFAULT '1',
+  `kitchen_progress` int(1) NOT NULL DEFAULT '0',
+  `grand_total` decimal(16,2) NOT NULL DEFAULT '0.00',
+  `tax` decimal(16,2) NOT NULL DEFAULT '0.00',
+  `paid_off` int(11) NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -213,7 +209,7 @@ CREATE TABLE `users` (
   `email` varchar(50) DEFAULT NULL,
   `password` text NOT NULL,
   `last_login` datetime DEFAULT NULL,
-  `active` int(11) NOT NULL DEFAULT 1
+  `active` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -221,7 +217,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `last_login`, `active`) VALUES
-(1, 'indahaulia', 'andrindah@gmail.com', '$2y$10$Z34LXzHrEfkAW1plV/Sr6.fhmsELyFKfb8Z7wXP8WYG48Tu06He5.', '2021-06-30 21:04:20', 1);
+(1, 'indahaulia', 'andrindah@gmail.com', '$2y$10$Z34LXzHrEfkAW1plV/Sr6.fhmsELyFKfb8Z7wXP8WYG48Tu06He5.', '2021-07-17 09:30:13', 1);
 
 --
 -- Indexes for dumped tables
@@ -283,7 +279,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT untuk tabel `category_dish`
@@ -295,13 +291,13 @@ ALTER TABLE `category_dish`
 -- AUTO_INCREMENT untuk tabel `master_customer`
 --
 ALTER TABLE `master_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_dish`
 --
 ALTER TABLE `master_dish`
-  MODIFY `dish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `dish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `master_price`
