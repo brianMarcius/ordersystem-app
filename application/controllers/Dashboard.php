@@ -64,8 +64,13 @@ class Dashboard extends CI_Controller {
         $data  = array(
             'dishert' => $dishert,
         );
+
+        $data1 = array(
+            'active' => "Menu",
+        );
+
         $this->load->view("admin/header.php");
-        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/sidebar.php",$data1);
         $this->load->view("admin/inputmenu.php",$data);
         $this->load->view("admin/footer.php");
     }
@@ -101,10 +106,15 @@ class Dashboard extends CI_Controller {
         }
         
         $data["dishert"] = $dishert->getById($id);
+
+        $data1 = array(
+            'active' => "Menu",
+        );
+
         if (!$data["dishert"]) show_404();
 
         $this->load->view("admin/header.php");
-        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/sidebar.php",$data1);
         $this->load->view("admin/editmenu.php",$data);
         $this->load->view("admin/footer.php");
     }
