@@ -20,24 +20,38 @@ class Kitchen_c extends CI_Controller {
     {
 
         // tampilkan halaman kitchen
-        $user = $this->user_model->countUser();
-        $dishert = $this->dishert_model->getData();
-        $dishert2 = $this->dishert_model->countDishert();
-        $order = $this->order_model->countOrder();
-        $customer = $this->customer_model->countCustomer();
+
+        $order = $this->order_model->getOrderKitchen();
         $data  = array(
-            'user' => $user,
-            'dishert' => $dishert,
-            'dishert2' => $dishert2,
             'order' => $order,
-            'customer' => $customer,
+        );
+
+        $data1 = array(
+            'active' => "Kitchen",
         );
 
         $this->load->view("admin/header.php");
-        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/sidebar.php",$data1);
         $this->load->view("admin/kitchen.php", $data);
         $this->load->view("admin/footer.php");
         
+    }
+
+    public function nextProgress(){
+        $id = $this->input->get('id');
+        $next = $this->order_model->nextProgress($id);
+        $cekprogress = $this->order_model->getProgress($id);
+        if ($cekprogress == 0) {
+            $keterangan = "Order is on waiting list";
+        }elseif ($cekprogress == 1) {
+            $keterangan = "Order is in process";
+        }else{
+            $keterangan = "Order is finished";
+        }
+
+        $data['status'] = $next;
+        $data['keterangan'] = $keterangan;
+        echo json_encode($data);
     }
 
 }

@@ -5,39 +5,54 @@
 <!-- DataTables -->
 <div class="card mb-3">
   <div class="card-header">
-    <a  href="<?php echo site_url('Kitchen_c')?>"><i class="fas fa-plus"></i> Add New</a>
+    <h3>Kitchen Progress</h3>
   </div>
   <div class="card-body">
     <div class="table-responsive">
       <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>Dish Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Description</th>
+            <th>Order ID</th>
+            <th>No Queue</th>
+            <th>Customer Name</th>
+            <th>Transaction Date</th>
+            <th>Progress</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($dishert as $dishert): ?>
+          <?php foreach ($order as $ord): ?>
+            <?php  if ($ord->kitchen_progress == 0) {
+                  $keterangan = "Waiting List";
+                  $badgeColor = "badge-secondary";
+                  $nextProgress = "Progress";
+                  $btnColor = "btn-primary";
+                }else{
+                  $keterangan = "On Progress";
+                  $badgeColor = "badge-primary";  
+                  $nextProgress = "Done";
+                  $btnColor = "btn-danger";
+                } ?>
           <tr>
             <td width="150">
-              <?php echo $dishert->dish_name ?>
+              <?php echo $ord->order_id ?>
             </td>
             <td>
-              <?php echo $dishert->category ?>
+              <?php echo $ord->no_queue ?>
             </td>
             <td>
-              <?php echo $dishert->price ?>
+              <?php echo $ord->customer_name ?>
             </td>
-            <td class="small">
-              <img src="<?php echo $dishert->img ?>" width="64" />
+            <td>
+              <?php echo $ord->trx_date ?>
+            </td>
+            <td>
+              <span class="right badge <?php echo $badgeColor ?>">
+                <?php echo $keterangan ?>
+              </span>
+            </td>
             <td width="250">
-              <a href="<?php echo site_url('admin/products/edit/'.$dishert->dish_id) ?>"
-               class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-              <a onclick="deleteConfirm('<?php echo site_url('admin/products/delete/'.$dishert->dish_id) ?>')"
-               href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+              <a class="btn btn-xs <?php echo $btnColor ?>" onclick="nextProgress(<?php echo $ord->order_id ?>)"><?php echo $nextProgress ?></a>
             </td>
           </tr>
           <?php endforeach; ?>
@@ -48,4 +63,3 @@
 </div>
 </div>
 </div>
-

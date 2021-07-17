@@ -31,8 +31,12 @@ class Dashboard extends CI_Controller {
             'customer' => $customer,
         );
 
+        $data1 = array(
+            'active' => "Dashboard",
+        );
+
         $this->load->view("admin/header.php");
-        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/sidebar.php",$data1);
         $this->load->view("admin/index.php", $data);
         $this->load->view("admin/footer.php");
         
@@ -44,8 +48,13 @@ class Dashboard extends CI_Controller {
             'dishert' => $dishert,
 
         );
+
+        $data1 = array(
+            'active' => "Menu",
+        );
+
         $this->load->view("admin/header.php");
-        $this->load->view("admin/sidebar.php");
+        $this->load->view("admin/sidebar.php",$data1);
         $this->load->view("admin/menudish.php",$data);
         $this->load->view("admin/footer.php");
     }

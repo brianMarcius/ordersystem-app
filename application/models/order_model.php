@@ -85,4 +85,46 @@ class Order_model extends CI_Model
 
     }
 
+    public function getOrderKitchen(){
+        $sql = "SELECT a.order_id, a.no_queue, a.customer_name,a.trx_date,IF(a.dine_in=1,'Dine in','Take away') dine_in, a.kitchen_progress from order_transaction a where kitchen_progress !=2 and a.deleted_at is null";
+        $header = $this->db->query($sql)->result();
+        return $header;
+    }
+
+    public function nextProgress($id){
+        $sql = "UPDATE order_transaction set kitchen_progress = kitchen_progress+1 where order_id=$id";
+        $nextProgress = $this->db->query($sql);
+        return $nextProgress;  
+    }
+
+    public function getProgress($id){
+        $sql = "SELECT kitchen_progress as progress from order_transaction where order_id=$id";
+        $progress = $this->db->query($sql)->row();
+        return $progress->progress;  
+    }
+
+    public function getCashierList(){
+        $sql = "SELECT order_id, customer_name, trx_date, grand_total as total, tax from order_transaction where deleted_at is null and paid_off=0";
+        $header = $this->db->query($sql)->result();
+        return $header;
+    }
+
+    public function payOrder($id){
+        $sql = "UPDATE order_transaction set paid_off = 1 where order_id=$id";
+        $pay = $this->db->query($sql);
+        return $pay;  
+    }
+
+    public function getHeaderTransaction($id){
+        $sql = "SELECT * from order_transaction where order_id=$id";
+        $order = $this->db->query($sql)->row();
+        return $order;
+    }
+
+    public function getOrderDetail($id){
+        $sql = "SELECT a.order_id, a.dish_id, b.dish_name, a.qty, a.note, a.price from order_transaction_detail a, master_dish b where a.dish_id=b.dish_id and a.order_id=$id";
+        $order = $this->db->query($sql)->result();
+        return $order;
+    }
+
 }

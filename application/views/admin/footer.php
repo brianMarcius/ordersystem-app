@@ -18,7 +18,7 @@
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+  $.widget.bridge('uibutton', $.ui.button);
 </script>
 
 <!-- Bootstrap 4 -->
@@ -59,11 +59,90 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo site_url()?>/assets/dist/js/pages/dashboard.js"></script>
 
+<!-- SweetAlert2 -->
+<script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="../assets/plugins/toastr/toastr.min.js"></script>
+
 <script>
 function deleteConfirm(url){
 	$('#btn-delete').attr('href', url);
 	$('#deleteModal').modal();
-}
+};
+
+var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+      });
+      
+function nextProgress(id){
+  $.ajax({
+    url : "nextProgress",
+    type : "GET",
+    data : {
+      id:id
+    },
+    dataType : "JSON",
+    success : function(result){
+      if (result.status) {
+            // alert("woy")
+            Swal.fire({
+              icon: 'success',
+              title: result.keterangan
+            }).then(function(){ 
+                location.reload()
+            })
+      }
+    }
+  })
+}  
+
+
+      
+function pay(id){
+  $.ajax({
+    url : "getOrderTransaction",
+    type : "GET",
+    data : {
+      id:id
+    },
+    dataType : "JSON",
+    success : function(result){
+          $(".invoice").html(result.html);
+          $("#btn-checkout").html('<button type="button" class="btn btn-primary" onclick="checkout('+id+')">Checkout</button>')
+          $("#invoice").modal('show');
+
+      
+    }
+  })
+} ;
+
+function checkout(id){
+  $.ajax({
+    url : "payOrder",
+    type : "GET",
+    data : {
+      id:id
+    },
+    dataType : "JSON",
+    success : function(result){
+        $("#invoice").modal('hide');
+            // alert("woy")
+            if (result) {
+              Swal.fire({
+              icon: 'success',
+              title: 'Order has been paid'
+            }).then(function(){ 
+                location.reload()
+            })
+            }
+            
+      
+    }
+  })
+};
 </script>
 </body>
 </html>

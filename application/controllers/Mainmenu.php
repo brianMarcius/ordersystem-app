@@ -74,7 +74,7 @@ class Mainmenu extends CI_Controller {
         foreach ($data as $cart) {
             $html .= "<tr>
                         <td>".++$no."</td>
-                        <td><img src='".site_url().$cart->img."' style='width:100px'/></td>
+                        <td><img src='".site_url()."/assets/product_img/".$cart->img."' style='width:100px'/></td>
                         <td>".$cart->dish_name."</td>
                         <td>".$cart->qty." x</td>
                         <td>".$cart->note."</td>

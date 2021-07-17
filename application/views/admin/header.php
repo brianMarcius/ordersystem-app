@@ -25,6 +25,11 @@
   <link rel="stylesheet" href="<?php echo site_url()?>/assets/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo site_url()?>/assets/plugins/summernote/summernote-bs4.min.css">
+
+  <link rel="stylesheet" href="../assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
+  <link rel="stylesheet" href="../assets/plugins/toastr/toastr.min.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -32,7 +37,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+      <img class="animation__shake" src="<?php echo site_url()?>assets/dist/img/logo1.png" alt="OrderSystemLogo" height="200" width="200">
     </div>
 
     <!-- Navbar -->

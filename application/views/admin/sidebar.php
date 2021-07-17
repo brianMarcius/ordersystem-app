@@ -22,7 +22,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- List Menu Bar-->
           <li class="nav-item menu-open">
-            <a class="nav-link active" href="<?php echo site_url('Dashboard') ?>">
+            <a class="nav-link <?php if($active=='Dashboard') { echo 'active';} ?>" href="<?php echo site_url('Dashboard') ?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -30,7 +30,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('Dashboard/formshowdata') ?>">
+            <a class="nav-link <?php if($active=='Menu') { echo 'active';} ?>" href="<?php echo site_url('Dashboard/formshowdata') ?>">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Menu Makanan
@@ -38,17 +38,25 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo site_url('Cashier_c/') ?>" class="nav-link">
+            <a href="<?php echo site_url('Cashier_c/') ?>" class="nav-link <?php if($active=='Cashier') { echo 'active';} ?>">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Cashier
               </p>
             </a>
           <li class="nav-item">
-            <a href="<?php echo site_url('Kitchen_c/') ?>" class="nav-link">
+            <a href="<?php echo site_url('Kitchen_c/') ?>" class="nav-link <?php if($active=='Kitchen') { echo 'active';} ?>">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Kitchen
+              </p>
+            </a>
+          </li> 
+          <li class="nav-item">
+            <a href="<?php echo site_url() ?>/login/logout" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Log out
               </p>
             </a>
           </li> 
