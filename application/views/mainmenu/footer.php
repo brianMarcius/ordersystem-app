@@ -92,7 +92,7 @@ var Toast = Swal.mixin({
         dataType : "JSON",
         success:function(result){
           console.log(result[0].img);
-          $("#img-product").attr('src',"../"+result[0].img)
+          $("#img-product").attr('src',"../assets/product_img/"+result[0].img)
           $("#name-product").html(result[0].dish_name)
           $("#dish_id").val(result[0].dish_id)
           $("#price").val(result[0].price)

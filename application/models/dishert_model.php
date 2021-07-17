@@ -7,7 +7,7 @@ class Dishert_model extends CI_Model
     public $dish_id;
     public $dish_name;
     public $price;
-    public $image = "default.jpg";
+    public $img = "default.jpg";
     public $category;
 
     public function rules()
@@ -90,40 +90,41 @@ class Dishert_model extends CI_Model
         $this->dish_name = $post["dish_name"];
         $this->price = $post["price"];
         $this->category = $post["category"];
+        if (!empty($_FILES["img"]["name"])) {
+            $this->img = $this->_uploadImage();
+        } else {
+            $this->img = $post["old_img"];
+        }
         return $this->db->update($this->_table, $this, array('dish_id' => $post['dish_id']));
     }
 
     public function delete($id)
     {
+        $this->_deleteImage($id);
         return $this->db->delete($this->_table, array("dish_id" => $id));
     }
 
     private function _uploadImage() {
         $config['upload_path'] = './assets/product_img/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['overwrite'] = true;
         $config['max_size'] = 2048;
 
-        $this->load->library('upload',$config);
+        $this->load->library('upload', $config);
 
-    if ($this->upload->do_upload('img'))
-        {
-                $error = array('error' => $this->upload->display_errors());
-
-                return $error;
-
-                // $this->load->view('upload_form', $error);
+        if ($this->upload->do_upload('img')) {
+            return $this->upload->data("file_name");
         }
-        else
-        {
-                $data = array('upload_data' => $this->upload->data('file_name'));
-
-                return $data;
-
-                // $this->load->view('upload_success', $data);
-        }
-
-
-        return 'default.jpg';
+        
+        return "default.jpg";
     }
+
+    private function _deleteImage($id)
+    {
+    $product = $this->getById($id);
+    if ($product->img != "default.jpg") {
+	    $filename = explode(".", $product->img)[0];
+		return array_map('unlink', glob(FCPATH."assets/product_img/$filename.*"));
+    }
+}
 }

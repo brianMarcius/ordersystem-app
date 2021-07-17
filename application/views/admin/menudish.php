@@ -32,7 +32,7 @@
               <?php echo $dishert->price ?>
             </td>
             <td class="small">
-              <img src="<?php echo base_url('assets/product_img/'.$dishert->img) ?>" width="64" />
+              <img src="<?php echo base_url('/assets/product_img/'.$dishert->img) ?>" width="64" />
             <td width="250">
               <a href="<?php echo site_url('Dashboard/edit/'.$dishert->dish_id) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
               <a onclick="deleteConfirm('<?php echo site_url('Dashboard/delete/'.$dishert->dish_id) ?>')"href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Delete</a>

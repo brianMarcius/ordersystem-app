@@ -58,7 +58,7 @@
 								<label for="name">Photo</label>
 								<input class="form-control-file <?php echo form_error('image') ? 'is-invalid':'' ?>"
 								 type="file" name="img" />
-								<input type="hidden" name="old_image" value="<?php echo $dishert->img ?>" />
+								<input type="hidden" name="old_img" value="<?php echo $dishert->img?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('image') ?>
 								</div>

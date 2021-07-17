@@ -29,7 +29,7 @@
               <?php for ($i=0; $i < sizeof($bestseller); $i++) { ?>
                 <div class="col-md-12 col-lg-6 col-xl-4">
                   <div class="card mb-2" onClick="addToCart(<?php echo $bestseller[$i]->dish_id; ?>)">
-                    <img class="card-img-top" src="<?php echo site_url().$bestseller[$i]->img; ?>" style="height: 318px" alt="<?php echo $bestseller[$i]->dish_name;?>">
+                    <img class="card-img-top" src="<?php echo base_url('assets/product_img/'.$bestseller[$i]->img) ?>" style="height: 318px" alt="<?php echo $bestseller[$i]->dish_name;?>">
                     <div class="card-img-overlay d-flex flex-column justify-content-center" style="background-image: linear-gradient(to bottom, rgba(255,0,0,0),rgba(0,0,0,0.2),rgba(0,0,0,0.5), rgba(0,0,0,1));">
                       <h5 class="card-title text-white mt-5 pt-2"><?php echo $bestseller[$i]->dish_name; ?></h5>
                       <p class="card-text pb-2 pt-1 text-white">
@@ -84,7 +84,7 @@
               <?php for ($i=0; $i < sizeof($foods); $i++) { ?>
                 <div class="col-md-12 col-lg-6 col-xl-4">
                   <div class="card mb-2" onClick="addToCart(<?php echo $foods[$i]->dish_id; ?>)">
-                    <img class="card-img-top" src="<?php echo site_url().$foods[$i]->img; ?>" style="height: 318px" alt="<?php echo $foods[$i]->dish_name;?>">
+                    <img class="card-img-top" src="<?php echo site_url('assets/product_img/'.$foods[$i]->img) ?>" style="height: 318px" alt="<?php echo $foods[$i]->dish_name;?>">
                     <div class="card-img-overlay d-flex flex-column justify-content-center" style="background-image: linear-gradient(to bottom, rgba(255,0,0,0),rgba(0,0,0,0.2),rgba(0,0,0,0.5), rgba(0,0,0,1));">
                       <h5 class="card-title text-white mt-5 pt-2"><?php echo $foods[$i]->dish_name; ?></h5>
                       <p class="card-text pb-2 pt-1 text-white">
@@ -137,7 +137,7 @@
               <?php for ($i=0; $i < sizeof($drinks); $i++) { ?>
                 <div class="col-md-12 col-lg-6 col-xl-4">
                   <div class="card mb-2" onClick="addToCart(<?php echo $drinks[$i]->dish_id; ?>)">
-                    <img class="card-img-top" src="<?php echo site_url().$drinks[$i]->img; ?>" style="height: 318px" alt="<?php echo $drinks[$i]->dish_name;?>">
+                    <img class="card-img-top" src="<?php echo site_url('assets/product_img/'.$drinks[$i]->img)?>" style="height: 318px" alt="<?php echo $drinks[$i]->dish_name;?>">
                     <div class="card-img-overlay d-flex flex-column justify-content-center" style="background-image: linear-gradient(to bottom, rgba(255,0,0,0),rgba(0,0,0,0.2),rgba(0,0,0,0.5), rgba(0,0,0,1));">
                       <h5 class="card-title text-white mt-5 pt-2"><?php echo $drinks[$i]->dish_name; ?></h5>
                       <p class="card-text pb-2 pt-1 text-white">
@@ -190,7 +190,7 @@
               <?php for ($i=0; $i < sizeof($snacks); $i++) { ?>
                 <div class="col-md-12 col-lg-6 col-xl-4">
                   <div class="card mb-2" onClick="addToCart(<?php echo $snacks[$i]->dish_id; ?>)">
-                    <img class="card-img-top" src="<?php echo site_url().$snacks[$i]->img; ?>" style="height: 318px" alt="<?php echo $snacks[$i]->dish_name;?>">
+                    <img class="card-img-top" src="<?php echo site_url('assets/product_img/'.$snacks[$i]->img) ?>" style="height: 318px" alt="<?php echo $snacks[$i]->dish_name;?>">
                     <div class="card-img-overlay d-flex flex-column justify-content-center" style="background-image: linear-gradient(to bottom, rgba(255,0,0,0),rgba(0,0,0,0.2),rgba(0,0,0,0.5), rgba(0,0,0,1));">
                       <h5 class="card-title text-white mt-5 pt-2"><?php echo $snacks[$i]->dish_name; ?></h5>
                       <p class="card-text pb-2 pt-1 text-white">
