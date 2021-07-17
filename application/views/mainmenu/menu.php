@@ -274,7 +274,7 @@
                     <option value="0">Take away</option>
                   </select>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 table-responsive">
                   <table class="table table-stripped table-hover" id="table-cart">
                   
                   </table>
